@@ -2,29 +2,15 @@
 
 > 小组成员:吕建瑶1811400,郑佶1811464,吴京1811440
 
-## 1. 实验目的
-
-1. 加深对 8254 计数功能和定时功能的理解。
-2. 加深对 8254 可编程特性以及前四种工作方式的理解。
-3. 学会用 8254 构建一些基本应用电路。
-
-## 2. 实验背景
-
-可编程计数器/定时器 8253/8254 几乎在所有微机接口技术的书中都会有介绍，这是因为计算机本身以及多数应用系统中都要用到计数功能和定时功能。众所周知，8253 内含 3个独立的 16 位计数器，每个计数器有 6 种工作方式，而 8254 是 8253 的改进型。8254 的引脚、工作方式与 8253 完全相同。改进主要在两个方面：一是计数频率更高，二是 8254 多了一个读回命令，该命令可将选择的计数器的状态字和（或）当前计数值一起锁存，供 CPU读取。在目前的情况下，8254 用的可能更多一些，因为利用读回命令可知道初值是否写入了计数器。因此，本实验系统对于计数/定时功能的实验安排的是 8254。下面是实验板上8254 的引脚示意图。
-
-![](img/lab8_bg.png)
-
-如果需要为某个计数器提供计数脉冲，可从实验箱的时钟源单元引出。
-
-## 3. 实验内容
+## 实验内容
 
 1. 了解计数脉冲来时的计数规律。
 2. 构建脉冲计数器，记录脉冲数。
 3. 构建可编程定时信号发生器，并记录一个时间段内其发出脉冲的个数。
 
-## 4. 译码电路
+## 译码电路
 
-## 5. 程序代码
+## 程序代码
 
 ```c
 //1.c
@@ -88,14 +74,14 @@ void main()
 	port_B = port_A+4;
 	port_C = port_A+8;
 	port_CMD = port_A+12; 
-	
+
 	outp(port_CMD,0x31);
 	outp(port_A,0x00);
 	outp(port_A,0x00);
 	outp(port_CMD,0x71);
 	outp(port_B,0x00);
 	outp(port_B,0x00);
-	outp(port_CMD,0xB1);	
+	outp(port_CMD,0xB1);
 	outp(port_C,0x00);
 	outp(port_C,0x00);
 	clk1=clock();
@@ -153,16 +139,16 @@ void main()
 	port_B = port_A+4;
 	port_C = port_A+8;
 	port_CMD = port_A+12; 
-	
+
 	outp(port_CMD,0x36);
 	outp(port_A,0x40);
 	outp(port_A,0x02);
-	
+
 	outp(port_CMD,0x76);
 	outp(port_B,0x80);
 	outp(port_B,0x0C);
 
-	outp(port_CMD,0xB0);	
+	outp(port_CMD,0xB0);
 	outp(port_C,0xFF);
 	outp(port_C,0xFF);
 	outp(port_CMD,0xc8);
@@ -178,7 +164,7 @@ void main()
 	d2=inp(port_C);
 	d3=inp(port_C);
 	printf("%d %d\n",d2,d3);
-	
+
 	x=(d2-a2)+(d3-a3)*256;
 	printf("%d \n",x);
 
@@ -186,11 +172,11 @@ void main()
 
 ```
 
-## 6. 系统接线图
+## 系统接线图
 
 ![](img/lab8_diagram.jpg)
 
-## 7. 实验连线图
+## 实验连线图
 
 ![](img/lab8_result_1.png)
 
@@ -202,6 +188,3 @@ void main()
 
 3:
 ![](img/lab8_result_4.png)
-
-
-
