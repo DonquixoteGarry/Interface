@@ -32,16 +32,12 @@ void main()
 }
 ```
 
-## 系统接线图
+## 抽象接线图
 
 ![](img/lab1_diagram.jpg)
 
 ## 实验连线图
 
 ![](img/lab1_result_1.jpg)
-
-```
-
-```
 
 ![](img/lab1_result_2.jpg)

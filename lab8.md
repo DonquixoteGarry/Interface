@@ -170,7 +170,7 @@ void main()
 
 ```
 
-## 系统接线图
+## 抽象接线图
 
 ![](img/lab8_diagram.jpg)
 

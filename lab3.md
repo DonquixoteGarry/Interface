@@ -325,7 +325,7 @@ void delay(int time)
 }
 ```
 
-## 系统接线图
+## 抽象接线图
 
 ![](img/lab3_diagram.jpg)
 

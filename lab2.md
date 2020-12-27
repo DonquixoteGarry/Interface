@@ -38,7 +38,7 @@ void main()
 }
 ```
 
-## 系统接线图
+## 抽象接线图
 
 ![](img/lab2_diagram.jpg)
 
