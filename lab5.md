@@ -9,8 +9,6 @@
 3. 和 4×4 键盘矩阵结合：在 4×4 键盘矩阵上按一个键（0～9）,将该键对应的编号（0～9）在最低位数码管上显示出来（原有的显示被去掉）.要求编成循环结构,上述操作可重复进行.按非数字键,程序退出.
 4. （选做）在实验③的基础上改进：在 4×4 键盘矩阵上按一个键（0～9）,将原有的显示向左移一位,新输入的按键编号（0～9）在最低位数码管上显示出来；按“B”键原有显示向右移一位,最高位补 0 或不显示；按其他键程序退出.
 
-## 译码电路
-
 ## 程序代码
 
 ```c
@@ -40,7 +38,7 @@ void main()
 
 	while(1)
 	{
-	
+
 		outp(MY8255_A, a);
 		outp(MY8255_B, b);
 		key();
@@ -85,9 +83,9 @@ char a[] = {0x3f, 0x06, 0x5b, 0x4f,
 			0x66, 0x6d, 0x7d, 0x07,
 			0x7f, 0x6f, 0x77, 0x7c,
 			0x39, 0x5e, 0x79, 0x71};
-		
+
 char m[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}; 
-		
+
 char b[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 int  cc;
 int  b_n=0;
@@ -127,10 +125,10 @@ void getkey(void)
 	for(i=0;i<=3;i++)
 	{
 		outp(MY8255_A, j);
-	
+
 
 		itoa(j, buff, 2);
-	
+
 		printf("j: %s\n", buff);
 		if ( !( (inp(MY8255_C)) & 0x01) )
 		{
@@ -138,28 +136,28 @@ void getkey(void)
 			putbuf();
 			return;
 		}
-	
+
 		if ( !( (inp(MY8255_C)) & 0x02) )
 		{
 			n = i + 4;
 			putbuf();
 			return;
 		}
-	
+
 		if ( !( (inp(MY8255_C)) & 0x04) )
 		{
 			n = i + 8;
 			putbuf();
 			return;
 		}
-	
+
 		if ( !( (inp(MY8255_C)) & 0x08) )
 		{
 			n = i + 12;
 			putbuf();
 			return;
 		}
-	
+
 		j <<= 1;
 	}
 }
@@ -237,7 +235,9 @@ void delay(int time)
 
 ## 系统接线图
 
-![](img/lab5_diagram.jpg)
+![](img/lab5_diagram-1.jpg)
+
+![](img/lab5_diagram-2.jpg)
 
 ## 实验连线图
 

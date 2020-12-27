@@ -8,8 +8,6 @@
 2. 用查询法和定时法分别采集 8 个通道的 A/D 转换读数（又称采样值）,并转换成对应的电压,将结果显示出来.(各通道的输入电压自定义,可接地或者 Vcc)
 3. 选取若干个数进行 D/A 转换,再通过 ADC0809 的某个通道进行循环采集和转换,并将结果显示出来.
 
-## 译码电路
-
 ## 程序代码
 
 ```c
@@ -42,7 +40,7 @@ void main()
 		outp(AD0809, 0x00+i);//
 		delay(0x700);
 		datas[i] = inp(AD0809);//AD0809读这个地址的值
-	
+
 		}
 		for(i=0;i<8;i++){
 	//	printf("%02X\r\n", datas[i]);
@@ -110,7 +108,7 @@ void main()
 
 			while(1){
 				eoc=inp(MY8255_A);
-			
+		
 				eoc=eoc&0x01;
 				//printf("eoc:%d\n",eoc);
 				if(eoc==0x01)
@@ -179,7 +177,7 @@ void main()
 			outp(AD0809, 0x00);
 			while(1){
 				eoc=inp(MY8255_A);
-			
+		
 				eoc=eoc&0x01;
 				if(eoc==0x01)
 				{
@@ -214,8 +212,6 @@ void delay(int time)
 	return;
 }  
 ```
-
-## 系统接线图
 
 ## 实验连线图
 

@@ -11,8 +11,6 @@
 5. 去掉 8255A 的所有连线,将 C 口（PC7～PC0）和 LED 显示模块连接起来.编程时,将C 口设置成方式 0 输出,通过循环,向 C 口输出,使 LED 呈现规律性变化（变化规律自行设计）.
 6. 保留实验⑤的连线,编程时,仍将 C 口设置成方式 0 输出,但要求通过置位/复位操作,使 LED 呈现规律性变化（变化规律同实验⑤或重新设计）.
 
-## 译码电路
-
 ## 程序代码
 
 ```c
@@ -101,7 +99,7 @@ void main()
 		printf("%d ", b);
 		itoa(b, buff, 2);
 		printf("%s\n\n", buff);
-	
+
 		a = a++ % 255;
 
 		key();
@@ -168,7 +166,7 @@ void main()
 		printf("%d ", b);
 		itoa(b, buff, 2);
 		printf("%s\n\n", buff);
-	
+
 		a = a++ % 255;
 
 		key();
@@ -235,7 +233,7 @@ void main()
 		printf("%d ", a);
 		itoa(a, buff, 2);
 		printf("%s\n\n", buff);
-	
+
 		a = a++ % 255;
 
 		key();
@@ -299,9 +297,9 @@ void main()
 		delay(0x1000);
 		outp(MY8255_C, a);
 		delay(0x1000);
-	
+
 		outp(MY8255_MODE, 0x01);
-	
+
 		key();
 	}
 }

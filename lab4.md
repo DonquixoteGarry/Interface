@@ -7,8 +7,6 @@
 1. 用 8255A 作接口,用行扫描法识别闭合键.要求程序编成循环结构,不按键时无输出,按下某个键,将其对应的字符显示出来,并且只显示一次.
 2. 了解行反转法编程要点.
 
-## 译码电路
-
 ## 程序代码
 
 ```c
@@ -75,35 +73,35 @@ void getkey(void)
 	for(i=0;i<=3;i++)
 	{
 		outp(MY8255_A, j);
-	
+
 		if ( !( (inp(MY8255_C)) & 0x01) )
 		{
 			n = i + 0;
 			putbuf();
 			return;
 		}
-	
+
 		if ( !( (inp(MY8255_C)) & 0x02) )
 		{
 			n = i + 4;
 			putbuf();
 			return;
 		}
-	
+
 		if ( !( (inp(MY8255_C)) & 0x04) )
 		{
 			n = i + 8;
 			putbuf();
 			return;
 		}
-	
+
 		if ( !( (inp(MY8255_C)) & 0x08) )
 		{
 			n = i + 12;
 			putbuf();
 			return;
 		}
-	
+
 		j <<= 1;
 	}
 }
@@ -124,7 +122,7 @@ void dis(void)
 	{
 		outp(MY8255_A, j);
 		outp(MY8255_B, a[b[i]]);
-	
+
 		delay(0x100);
 		j >>= 1;
 		j |= 0x80;
